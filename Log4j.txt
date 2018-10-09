@@ -2,4 +2,7 @@
 Source : https://www.youtube.com/watch?v=rbuR9Q_55h4
 -------------------------------------------------------
 
-   - 
+   - Log4j is a java based logging framework 
+   - Configured through a configuration file 
+     * log4j.properties 
+     * log4j.xml
