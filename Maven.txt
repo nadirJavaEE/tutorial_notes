@@ -1,0 +1,29 @@
+----------------   
+
+   - Dependency 
+   - versions 
+   - types 
+   - transitive dependencies 
+   - Scopes  
+     * compile  : default scope 
+     * provided : means that the artifact is going to be provided where it is deployed.
+     * runtime  : not needed for compilation but needed when execution  
+     * test     : only available for the test compilation and execution phase 
+     * system   : similar to provided, you specify a path to the jar on your file system 
+     * import   : advanced...
+
+----------    Maven repositories    ----------    
+
+   - Introduction 
+   - What is a repository
+     * http accessible location that you download files from. 
+     * default location : http://repo.maven.apache.org/maven2
+     * Multiple repositories allowed
+     * corporate repository = ?? 
+   - Dependency repository 
+   - Plugin repository   
+
+----------    Plugins    ---------- 
+
+   - Goals 
+   - javadoc plugin
