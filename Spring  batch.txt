@@ -1,0 +1,18 @@
+###############   Spring batch: mkyong    ###################
+#############################################################
+
+   - job = 1 or many steps 
+   - A step 
+     * "READ-PROCESS-WRITE" task 
+     * single operation : "tasklet"
+
+   -----------------------------------------------------------
+   |   1 Job = Many Steps.                                   | 
+   |   1 Step = 1 READ-PROCESS-WRITE or 1 Tasklet.           |
+   |   Job = {Step 1 -> Step 2 -> Step 3} (Chained together) |
+   ----------------------------------------------------------- 
+
+-------------   Spring Batch Tasklet example   ------------------- 
+
+   - In Spring batch, the Tasklet is an interface, which will be called to perform a single task only, like clean or set up resources before or after any step execution.
+   - 
