@@ -1,0 +1,110 @@
+##########   Spring    #####################
+############################################
+
+----------    Pluralsight:  Spring fundamentals by :  bryan hansen    -------
+
+   - Introduction 
+     * Spring container : sort of a big hashMap 
+
+   - Architecture andProject Setup
+     *  new maven project : packaging jar 
+     *  com.pluralsight.Model
+        * Customer : String firstName, String lastName 
+     *  com.pluralsight.repository
+        * HibernateCustomerRepositoryImpl 
+          * public List<Customer> findAll() 
+        * Extract Interface : CustomerRepository
+     *  com.pluralsight.service 
+        * CustomerServiceImpl 
+          * List <Customer> findAll() 
+        * Extract interface : CustomerService
+     * com.pluralsight.launcher 
+        * Application : main() 
+
+     * dependencies:
+        * spring-context 
+  
+   - Spring XML Configuration  
+     * applicationContext.xml (src/main/resources)
+       * <?xml version="1.0" encoding="UTF-8"?>
+         <beans xmlns="http://www.springframework.org/schema/beans"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+         </beans>    
+
+     *  beans 
+        * <bean name="customerRepository" 
+                class="com.pluralsight.repository.HibernateCustomerRepositoryImpl" />
+          <bean name="customerService" 
+                class="com.pluralsight.service.CustomerServiceImpl" 
+                <property name="customerRepository" ref="customerRepository" />
+          />
+     *  setter Injection 
+        * define a setter into CustomerServiceImpl class (setCustomerRepository)
+
+        *  Create an instance of the application  context in the main method 
+           * ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml")
+           CustomerServceservice = appConext.getBean("customerService", CustomreService.class)
+
+     * Constructor injection 
+       * <bean name="customerService" 
+                class="com.pluralsight.service.CustomerServiceImpl" 
+                <constuctor-arg index="0" ref="customerRepository" />
+          />  
+
+     * Autowire
+       * autowiring  byType 
+       * autowiring  byName    
+       * autowiring  constructor
+         <bean name="customerService" 
+                class="com.pluralsight.service.CustomerServiceImpl" autowire="constructor"        
+          /> 
+       * autowiring  none (it can not be autowired at all)  
+
+   - Spring Annotation Configuration Using XML
+     * Annotation configuration is the second method available in spring to wire up your application
+     * applcationContext.xml (src/main/resources)
+       <?xml version="1.0" encoding="UTF-8"?>
+         <beans xmlns="http://www.springframework.org/schema/beans"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:context="http://www.springframework.org/schema/context"
+                xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                ">
+
+          <context:annotation-config/>
+	  <context:component-scan base-package="com.pluralsight"/>
+
+         </beans>      
+    * available annotations : (called stereotype annotations)
+      * @Component 
+      * @Service
+      * @Repository
+    * Autowire (@Autowired)  : we can autowire at 3 locations
+      * member variables 
+      * Constructor 
+      * Setter    
+
+    * Setter Injection  
+
+    * Constructor injection 
+
+   - Spring configuration using  java 
+     * The latest method for wiring spring application  
+     * No applicationContext.xml file 
+     * AppConfig.java : @Configuration 
+
+     * ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class)
+       CustomerService service = appContext.getBean ("customerService", CustomerService.class) ;
+
+   - Bean Scopes : 
+     * Singleton (default)
+     * Prototype
+     * Request, Session, Global (valid only in web-aware Spring projects)
+     
+     * Singleton : there is one instance of the class inside spring container 
+       
