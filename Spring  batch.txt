@@ -12,7 +12,9 @@
    |   Job = {Step 1 -> Step 2 -> Step 3} (Chained together) |
    ----------------------------------------------------------- 
 
--------------   Spring Batch Tasklet example   ------------------- 
+-------------   Spring Batch Tasklet example   ------------------------------------- 
 
    - In Spring batch, the Tasklet is an interface, which will be called to perform a single task only, like clean or set up resources before or after any step execution.
    - 
+
+------------   Run Spring batch job with CommandLineJobRunner -----------------------------

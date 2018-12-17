@@ -1,0 +1,75 @@
+###############   Hibernate    ###################
+#############################################################
+
+-------------------------------------   Java Hibernate JPA Annotations Tutorial for Beginners   ------------------------------------- 
+
+   - When using JPA, you have to import interfaces and classes from the package "javax.persistence".
+   - JPA defines Java Persistence Query Language (JPQL) which is an object-oriented query language. 
+     The syntax of JPQL is similar to SQL but it operates against Java objects rather than directly with database tables.
+   - @GeneratedValue(strategy = GenerationType.?)
+     * ? : AUTO      -->  Implies that the generated values are unique at database level.   
+     * ? : IDENTITY  -->  Specifies that the generated values are unique at table level
+     * ? : SEQUENCE  -->
+     * ? : TABLE     -->
+
+     ----------------------              STEP 1 : Annotate model classes                  ----------------------
+
+     ----------------------   STEP 2 : Create JPA Configuration File (persistence.xml)    ----------------------
+   
+   - Should be put under : src/main/resources/META-INF 
+     <?xml version="1.0" encoding="UTF-8"?>
+        <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+        <persistence-unit name="UsersDB">
+            <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/usersdb" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="P@ssw0rd" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            </properties>
+        </persistence-unit>   
+        </persistence>
+
+        * <persistence>      : Specifies the version of JPA to be used (Here 2.1)
+        * <persistence-unit> : Specifies a unit of persistence with a name. The name (UsersDB) will be looked up by Java code.
+
+      ----------------------   STEP 3 : Understanding EntityManager and EntityManagerFatory   ----------------------
+
+   - An "EntityManager" instance is associated with a persistence context, and it is used to interact with the database.
+   - A "persistence context" is a set of entity instances, which are actually the objects or instances of the model classes.
+   - So we use the "EntityManager" to manage "entity instances" and their life cycle (create, update, remove, query, ...)
+   - EntityManagerFactory : is used to create an EntityManager. It is associated with a persistence unit.
+                            In Java SE environments, an EntityManagerFactory can be obtained from the "Persistence class".
+
+      ----------------------   STEP 4 : Typical steps to manage entity instances via JPA   ----------------------
+
+   - Create an EntityManagerFactory from a persistence unit
+   - Create an EntityManager from the EntityManagerFactory
+   - Begin a transaction
+   - Manage entity instances (create, update, remove, find, query, etc)
+   - Commit the transaction
+   - Close the EntityManager and EntityManagerFactory 
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("UsersDB");
+        EntityManager entityManager = factory.createEntityManager();
+         
+        entityManager.getTransaction().begin();
+         
+        User newUser = new User();
+        newUser.setEmail("billjoy@gmail.com");
+        newUser.setFullname("bill Joy");
+        newUser.setPassword("billi");
+         
+        entityManager.persist(newUser);
+         
+        entityManager.getTransaction().commit();
+         
+        entityManager.close();
+        factory.close();
+
+     -------------------------------------------------------------------------------------------------------------
+   
