@@ -1,0 +1,99 @@
+Partie 01 : Install MangoDB
+
+Partie 02 : PATH and Mangochef
+
+Partie 03 : Create / Drop Database 
+
+    - use "database name"
+    - db : list current database
+    - show dbs : list all databases
+    - db."collectionName".insert() : creer une collection
+    - db.dropDatabase() : delete current database
+    
+Partie 04 : Create / Drop Collections 
+    
+    - db.createCollection("collection name")
+    - show collections 
+    - db."collectionName".drop()
+    
+Partie 05 : Insert Documents
+
+    - Method 01 (One at a time) : db."collectionName".insert() 
+    - Method 02 (Using an array): db."collectionName".insert([]) 
+    
+Partie 06 : Query Documents
+
+    - db."collectionName".find() 
+    - db."collectionName".findOne() 
+    - db."collectionName".find({ "Condition" })
+    - db.employees.find({
+        "Age" : {$lt : "30"}
+      })   
+      
+Partie 07 : AND / OR Conditions
+
+    - AND 
+    db.employees.find({
+        "Skill" : "MongoDB", "Salary" : "80000"
+    })       
+    
+    - OR :  
+    db.employees.find({
+    $or : [{"Skill":"MongoDB"},{"Salary":"100000"}] 
+    })     
+    
+Partie 08 : Updating Documents
+
+    - db."collectionName".update(
+    "Selection criteria"
+    "Set value"
+    ) 
+    
+    - db.employees.update( 
+      {"id" : ObjectId("5cc5b2af5fdcb008cc973194")},
+      {$set : {"Salary" : "90000"}} 
+    )        
+    
+    db.employees.update( 
+      {"Skill" : "MongoDB"},
+      {$set : {"Salary" : "90000"}},
+      {multi : true} 
+    )        
+    
+Partie 09 : Remove Documents 
+
+    - db.employees.remove(
+     {"Selection criteria"}, 1
+    )                         --> Delete one document
+    
+Partie 10 : Selecting fields 
+
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0})  
+    
+Partie 11 : Limit, Skip and Sort
+
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0}).limit(3)
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0}).skip(3)
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0}).skip(3).limit(3)
+    
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0}).sort({"FirstName" : 1}) --> ascending order
+    - db.employees.find({}, {"FirstName" : 1, "_id" : 0}).sort({"FirstName" : -1}) --> descending order  
+    
+Partie 12 : Indexing
+
+    - db.eployees.getIndexes() : lister les indexes 
+    - db.employees.ensureIndex({"Email" : 1})
+    - db.employees.dropIndex({"Email" : 1})
+    
+Partie 13 : Aggregation
+
+    - db.employees.aggregate([{$group : {_id : "$Gender", Total : {$sum:1}}}])  
+    
+Partie 14 : Backup and Restore
+
+    - mongodump    : create a backup 
+    - mongorestore : restore data
+    - mongodump --db "database name" : dump a single database 
+    - mongorestore --db "database name" PATH (PATH = dump/"database name" )          
+
+        

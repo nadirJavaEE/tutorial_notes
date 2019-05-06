@@ -1,0 +1,9 @@
+Tutorial Gravikartz 
+
+Installation 
+
+    - cmd : elasticsearch
+    - localhost : 9200
+    - config/elasticsearch.yml --> xpack.ml.enabled: false
+    
+    

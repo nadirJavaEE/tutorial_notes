@@ -1,0 +1,28 @@
+-----------   Book : MongoDB for java developpers   -----------------
+
+Partie 01 : NoSQL databases
+
+    - Type of NoSQL databases : 
+     * Key-value stores --> Redis, Dynamo, Riak
+     * Column-oriented  --> BigTable, Cassandra, SimpleDB
+     * Graph            --> OrientDB, Neo4J, Titan
+     * Document-oriented--> MongoDB, CouchDB
+     
+Partie 02 : Installing MongoDB 
+
+    - Creating the "data/db" folder --> mongod --dbpath folderPath
+    
+Partie 03 : Accessing MongoBD with Java
+
+Partie 04 : Writing a Mongo Listener
+
+    - 2 types of sessions for a Servlet :  
+     * ContextServerListener
+     * HttpSessionListener      
+
+Partie 05 : The use of Java MongoDB Driver 
+ 
+    - The 2.x driver series : DBObject/DBCollection/DB  
+    - The 3.x driver series : Document/MongoCollection/MongoDatabase
+
+

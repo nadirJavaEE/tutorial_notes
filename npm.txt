@@ -1,0 +1,58 @@
+Partie 01 : Introduction 
+
+    - npm = Package manager for javascript code
+    
+Partie 02 : Getting npm 
+
+    - node -v 
+    - npm -v 
+    
+Partie 03 : npm Help 
+
+    - npm help 
+    - npm help-search sth
+    - npm <command> -h 
+    
+Partie 04 : package json 
+
+    - npm init --yes (create the file package.json)
+    
+Partie 05 : package.json defaults 
+
+    - npm config set init-author-name "nadir"    
+    
+Partie 06 : Installing Local Packages
+
+    - npm install "package name" (npm install moment)
+      * ceation d'un package "node modules" dans le quel il y a un repertoire "package name"   
+      
+    - In order to save the name of the module in package.json we need to use : npm install "package name" --save
+    - In order to install packages for developement purpose only : npm install "package name" --save-dev 
+    
+Partie 07 : Uninstalling Local Packages
+
+    - npm uninstall "package name" --save (--save to remove it from package.json)
+
+Partie 08 : Installing Global Packages
+
+    - npm install "package name" -g 
+    
+Partie 09 : Uninstall Global Packages
+
+    - npm uninstall "package name" -g
+    
+Partie 10 : Listing packages
+
+    - Local packages : npm list --depth 0
+    - Global packages: npm list --global true depth 0
+    
+Partie 11 : npm versioning
+
+    - Install a specific version of a package : npm install "package name"@version --save 
+    
+Partie 12 : Installing from package json
+
+Partie 13 : Updating packages
+
+    - npm update "package name" --save
+    - npm update --dev --save-dev                   

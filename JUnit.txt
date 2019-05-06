@@ -1,0 +1,12 @@
+----------------   
+
+
+
+
+
+
+----------  Introduction      ----------    
+
+    - Methods annotated with "@Test" should be "public void"
+    - assertEquals(expected, actual) 
+    - assertFalse("Dummy String", boolean value) 
