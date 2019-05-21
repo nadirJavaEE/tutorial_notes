@@ -1,0 +1,46 @@
+Pluralsight - Searching and Analyzing Data with Elasticsearch: Getting Started
+by Janani Ravi
+
+Partie 01 : Introduction 
+
+    - Apache Lucene : indexing and search library for a performance, full text search engine
+    - elasticsearch : built on apache Lucene
+      * distributed : scales to thousands of nodes 
+      * high availability 
+      * restful api
+      * powerful query DSL 
+      * Schemaless
+       
+     - Working with elasticsearch 
+      * As a service in the cloud (kibana and elasticsearch - 14 days free)  
+      * in your local machine
+      
+     - Specify the name of the cluster and node at startup 
+      * elasticsearch -Ecluster.name=nadir_es -Enode.name=my_first_node
+       
+     - Basic concepts of elasticsearch 
+      * cluster = multiple nodes 
+      * index = collection of similar documents 
+       
+     - localhost:9200 --> the health of the cluster
+     - http://localhost:9200/_cat/health?v&pretty : 
+     - http://localhost:9200/_cat/nodes?v&pretty
+     
+Partie 02 : CRUD operations 
+
+     - curl : a tool that allows you to transfer data from and to a server using a variety of protocols 
+     
+     - curl -XGET "localhost:9200/_cat/indices?v&pretty"
+       get all the indices present in the cluster
+       
+     - create index : 
+       * curl -XPUT "localhost:9200/indexName?&pretty" 
+        
+     - add a document to an index : 
+       * curl -XPUT "localhost:9200/products/mobiles/1?pretty" -d 
+         "name" : "iphone7",
+         "camera" : "12MP",
+         "storage" : "256GB",
+         "display":"4.7inch",
+         "battery" : "1,96mAh",
+         "reviews" : ["Incredibly happy after having used it for one week", "Best iPhone so far", "Very expensive" ]

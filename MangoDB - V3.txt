@@ -1,0 +1,93 @@
+-----------   Pluralisght : Nuri Halperin   -----------------
+
+Partie 01 : MongoDB Installation
+
+    - Command line options : mongod --help | more
+    - Example : 
+        * Where data files will reside : dpath = filename
+        * Where the log file will be stored : logpath = filename.log
+        * How verbose the server will be logging : verbose=vvvvv
+    - Start the mongod using a configuration file : 
+        * mongod -f filename.conf
+    - Install Mongo server as a service 
+        * mongod -- install (cmd as administrator)
+    - Démarrer le service 
+        * net start mongodb
+    - Vérifier si le service est démarré 
+        * net start | findstr Mongo
+    - arreter le service :
+        * net stop mongodb
+        
+Partie 02 : Replica sets 
+
+    - Primary : The only writable instance 
+    - Secondary (or many secondaries)
+    - Arbiter
+    
+    - Configuring a replica Set 
+    
+Partie 03 : Mongo Shell 
+
+    - a script to avoid drop a database by accident : 
+        *  DB.prototype.dropDatabase = function() {
+                print("Don't do it man !"0) ;
+           }
+           db.dropDatabase = DB.prototype.fropDatabase;
+          
+     - commande --eval 
+     - commande --shell 
+     
+     - Multiline editing : 
+        * set EDITOR myEditor.exe 
+        * edit my function (from the shell)
+        * 
+     - RC file  
+     
+Partie 04 : Saving Data 
+
+    - Storage engine
+    - Saving document : it must have an id : "_id"
+    - the size of documents is limited to 16 MB 
+    - 
+    - add a field to a document : db.a.update({"_id":"1"}, {$set:{"y" : "3"})
+    - delete a field from a document : db.a.update({"_id":"1"}, {$unset:{y : ''}) 
+    - rename : db.a.update({"_id" : "1"}, {$rename:{'old name' : 'new name'}}) 
+    
+    - add an element to an array :  
+      db.a.update({"_id":"1"}, {$push:{"things":"one"}})
+      
+      avoid to push the item twice : 
+      db.a.update({"_id":"1"}, {$addToSet:{"things":"one"}})
+      
+      pull all occurance from a table 
+      db.a.update({"_id":"1"}, {$pull:{"things":"one"}})
+      
+      enlever le premier element d'un tableau 
+      db.a.update({"_id":"1"}, {$pop:{"things":-1}})
+      
+      enlever le dernier element d'un tableau 
+      db.a.update({"_id":"1"}, {$pop:{"things" : 1}})
+      
+      Multi update : 
+      db.a.update({}, {$push:{things:4}},{multi:true})
+      
+      - Find and modify ??
+      
+Partie 05 : Finding documents 
+
+Partie 06 : Indexing
+
+    - Indexes in mango : 
+        * regular (B-Tree)
+        * Geo    
+        * Text 
+        * Hashed
+        * TTL
+         
+    - Create Index : db.foo.ensureIndex(keys, options)
+    
+    - show indexes : db.system.indexes.find({ns:'database.collection'}, {key:1})
+        
+    
+
+
