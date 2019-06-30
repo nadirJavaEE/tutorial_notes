@@ -61,3 +61,21 @@ Partie 04 : Views
         * ResourceBundleViewResolver
         * TilesViewResolver
         * UrlBasedViewResolver
+         
+Partie 05 : Tags (spring tag librairies)
+
+    - spring.tld      
+    - spring-form.tld        
+    
+    - interceptors 
+      * Pre-handle and post-handle web requests
+       
+Partie 06 : Validation 
+
+    - Constraint validation 
+    - Business Logic validation  
+    
+    - Validator interface
+    - ValidationUtils class
+    - BindingResult Class
+    - SimpleFormController      
