@@ -1,0 +1,63 @@
+Partie 01 : Introduction 
+
+    - Other Framework : 
+        * Struts 1 
+        * Struts2 
+        * Apache taperstry 
+        * apache wicket 
+        * google web toolkit (GWT)
+        * Java Server Faces (JSF)
+        * Stripes 
+        * Spring MVC 
+         
+    - Spring MVC
+        * Based on a Dispatcher Servlet / Front Controller Pattern  
+         
+Partie 02 : Building
+
+    - Configuring the web.xml 
+         <servlet>
+            <servlet-name>spring-rest</servlet-name>
+		    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		    <init-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value>/WEB-INF/config/servlet-config.xml</param-value>
+            </init-param>
+         <servlet>
+         
+         <servlet-mapping>
+		    <servlet-name>spring-rest</servlet-name>
+		    <url-pattern>/v1/*</url-pattern>
+	     </servlet-mapping>
+         
+    - Configuring the servlet-config.xml
+         <mvc:annotation-driven />
+         <context:component-scan base-package="controllers_package_where_to_look_for_annotations"/>
+         
+         <!-- Long way >
+         <bean class="org.springframework.web.servlet.view.internalRessourceViewResolver">
+             <property name="prefix" value="/WEB-INF/views_directory/" />
+             <property name="suffix" value=".jsp" />   
+         </bean>    
+         
+         <!-- Short way  -->
+         <bean class="org.springframework.web.servlet.view.InternalRessourceViewResolver" p:prefix="/WEB-INF/views_directory/" p:suffix=".jsp" /> 
+         
+Partie 03 : Architecture
+
+Partie 04 : Controllers
+
+    - Passing params 
+        * @ModelAttribute
+         
+Partie 04 : Views 
+
+    - View Resolvers :
+        * BeanNameViewResolver
+        * ContentNegociatingViewResolver
+        * FreeMarkerViewResolver
+        * InternalRessourceViewResolver
+        * JasperReportsViewResolver
+        * ResourceBundleViewResolver
+        * TilesViewResolver
+        * UrlBasedViewResolver
